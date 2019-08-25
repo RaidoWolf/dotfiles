@@ -30,20 +30,20 @@ fi
 
 # set Android SDK settings
 if [ -d "$HOME/dev/dev-tools/android-sdk" ]; then
-    export ANDROID_HOME=/home/alex/dev/dev-tools/android-sdk/
+    export ANDROID_HOME="$HOME/dev/dev-tools/android-sdk/"
 fi
 
 # set the default visual editor for some programs
 if [ -x "$(command -v nvim)" ]; then
     # NeoVIM
     export VISUAL=nvim
-else if [ -x "$(command -v vim)" ]; then
+elif [ -x "$(command -v vim)" ]; then
     # Vi Improved (vim)
     export VISUAL=vim
-else if [ -x "$(command -v vi)" ]; then
+elif [ -x "$(command -v vi)" ]; then
     # Vi
     export VISUAL=vi
-else if [ -x "$(command -v nano)" ]; then
+elif [ -x "$(command -v nano)" ]; then
     # GNU Nano
     export VISUAL=nano
 fi # VISUAL will not be set if none of these exist
@@ -55,9 +55,10 @@ case $- in
     *i*)
         # initialize GPG key
         export GPG_TTY=$(tty)
-        ;;
+	;;
 
     #not interactive
-      *) ;;
+    *) ;;
 
 esac
+
