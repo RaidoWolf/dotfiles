@@ -28,6 +28,14 @@ if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
 fi
 
+# load stuff for NVM
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
+    source /usr/share/nvm/init-nvm.sh
+else
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+fi
+
 # set Android SDK settings
 if [ -d "$HOME/dev/dev-tools/android-sdk" ]; then
     export ANDROID_HOME="$HOME/dev/dev-tools/android-sdk/"
